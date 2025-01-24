@@ -10,10 +10,12 @@ public class CalenderResponseDto {
     private Long id;
     private String task;
     private DateFormat date;
+    private String name;
 
     public CalenderResponseDto(Calender calender) {
         this.id = calender.getId();
         this.task = calender.getTask();
+        this.name = calender.getName();
         this.date = calender.getDate();
     }
 }

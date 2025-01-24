@@ -17,9 +17,11 @@ public class Calender {
     private String password;
     private DateFormat date;
 
-    public Calender(String task, DateFormat date) {
+    public Calender(String task, DateFormat date, String password, String name) {
         this.task = task;
         this.date = date;
+        this.name = name;
+        this.password = password;
     }
 
     public void update(String task, DateFormat date) {

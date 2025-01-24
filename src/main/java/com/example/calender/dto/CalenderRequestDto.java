@@ -8,4 +8,5 @@ import java.text.DateFormat;
 public class CalenderRequestDto {
     private String task;
     private DateFormat date;
+    private String name;
 }

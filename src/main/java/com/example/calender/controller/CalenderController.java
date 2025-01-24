@@ -22,7 +22,6 @@ public class CalenderController {
         return new ResponseEntity<>(calenderService.saveCalender(requestDto), HttpStatus.CREATED);
     }
 
-
     @GetMapping
     public List<CalenderResponseDto> findAllCalenders() {
         return calenderService.findAllCalenders();
@@ -30,7 +29,7 @@ public class CalenderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CalenderResponseDto> findCalenderById(@PathVariable Long id) {
-        return  new ResponseEntity<>(calenderService.findCalenderById(id), HttpStatus.OK);
+        return new ResponseEntity<>(calenderService.findCalenderById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id})")

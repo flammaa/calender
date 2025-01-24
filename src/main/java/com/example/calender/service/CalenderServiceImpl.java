@@ -21,7 +21,7 @@ public class CalenderServiceImpl implements CalenderService {
     @Override
     public CalenderResponseDto saveCalender(CalenderRequestDto requestDto) {
 
-        Calender calender = new Calender(requestDto.getTask(), requestDto.getDate());
+        Calender calender = new Calender(requestDto.getTask(), requestDto.getDate(), requestDto.getName(), requestDto.getPassword());
 
         Calender savedCalender = calenderRepository.saveCalender(calender);
 
