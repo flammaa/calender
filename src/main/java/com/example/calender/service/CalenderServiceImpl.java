@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.text.DateFormat;
 import java.util.List;
 
 @Service
@@ -47,7 +46,7 @@ public class CalenderServiceImpl implements CalenderService {
     }
 
     @Override
-    public CalenderResponseDto updateCalender(Long id, String task, DateFormat date) {
+    public CalenderResponseDto updateCalender(Long id, CalenderRequestDto requestDto) {
 
         Calender calender = calenderRepository.findCalenderById(id);
 
@@ -55,42 +54,52 @@ public class CalenderServiceImpl implements CalenderService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id =" + id);
         }
 
-        if (task == null || date == null) {
+        if (!calender.getPassword().equals(requestDto.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "비밀번호가 일치하지 않습니다.");
+        }
+
+        if (requestDto.getTask() == null || requestDto.getName() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The task and date are required values.");
         }
 
-        calender.update(task, date);
+        calender.update(requestDto.getTask(), requestDto.getName());
 
         return new CalenderResponseDto(calender);
 
     }
 
+//    @Override
+//    public CalenderResponseDto updateTask(Long id, String task) {
+//
+//        Calender calender = calenderRepository.findCalenderById(id);
+//
+//        if(calender == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id =" + id);
+//        }
+//
+//        if (task == null) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The task and date are required values.");
+//        }
+//
+//        calender.updateTask(task);
+//
+//        return new CalenderResponseDto(calender);
+//    }
+
     @Override
-    public CalenderResponseDto updateTask(Long id, String task, DateFormat date) {
-
-        Calender calender = calenderRepository.findCalenderById(id);
-
-        if(calender == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id =" + id);
-        }
-
-        if (task == null || date != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The task and date are required values.");
-        }
-
-        calender.updateTask(task);
-
-        return new CalenderResponseDto(calender);
-    }
-
-    @Override
-    public void deleteCalender(Long id) {
+    public void deleteCalender(Long id, CalenderRequestDto requestDto) {
 
         Calender calender = calenderRepository.findCalenderById(id);
 
         if (calender == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id);
         }
+
+        // 비밀번호 확인
+        if (!calender.getPassword().equals(requestDto.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "비밀번호가 일치하지 않습니다.");
+        }
+
         calenderRepository.deleteCalender(id);
     }
 }

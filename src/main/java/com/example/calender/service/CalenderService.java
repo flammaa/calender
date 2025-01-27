@@ -3,7 +3,6 @@ package com.example.calender.service;
 import com.example.calender.dto.CalenderRequestDto;
 import com.example.calender.dto.CalenderResponseDto;
 
-import java.text.DateFormat;
 import java.util.List;
 
 public interface CalenderService {
@@ -14,9 +13,9 @@ public interface CalenderService {
 
     CalenderResponseDto findCalenderById(Long id);
 
-    CalenderResponseDto updateCalender(Long id, String task, DateFormat date);
+    CalenderResponseDto updateCalender(Long id, CalenderRequestDto requestDto);
 
-    CalenderResponseDto updateTask(Long id, String task, DateFormat date);
+//    CalenderResponseDto updateTask(Long id, String task);
 
-    void deleteCalender(Long id);
+    void deleteCalender(Long id, CalenderRequestDto requestDto);
 }

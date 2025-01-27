@@ -32,18 +32,28 @@ public class CalenderController {
         return new ResponseEntity<>(calenderService.findCalenderById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/{id})")
+    @PutMapping("/{id}")
     public ResponseEntity<CalenderResponseDto> updateCalender(
             @PathVariable Long id,
             @RequestBody CalenderRequestDto requestDto
     ) {
-        return new ResponseEntity<>(calenderService.updateCalender(id, requestDto.getTask(), requestDto.getDate()), HttpStatus.OK);
+        return new ResponseEntity<>(calenderService.updateCalender(id, requestDto), HttpStatus.OK);
     }
+
+//    @PatchMapping("/{id})")
+//    public ResponseEntity<CalenderResponseDto> updateTask(
+//            @PathVariable Long id,
+//            @RequestBody CalenderRequestDto requestDto
+//    ) {
+//        return new ResponseEntity<>(calenderService.updateCalender(id, requestDto.getTask(), requestDto.getName()), HttpStatus.OK);
+//    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletecalender(@PathVariable Long id) {
-        calenderService.deleteCalender(id);
+    public ResponseEntity<Void> deleteCalender(
+            @PathVariable Long id,
+            @RequestBody CalenderRequestDto requestDto
+    ) {
+        calenderService.deleteCalender(id, requestDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

@@ -30,7 +30,7 @@ public class CalenderRepositoryImpl implements CalenderRepository {
 
     @Override
     public Calender saveCalender(Calender calender) {
-
+        //db와 상호작용 // 식별자 자동생성
         Long calenderId = calenderList.isEmpty() ? 1 : Collections.max(calenderList.keySet()) + 1;
         calender.setId(calenderId);
 
