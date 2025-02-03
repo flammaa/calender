@@ -5,23 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @AllArgsConstructor
 public class Calender {
 
-    @Setter
     private Long id;
     private String task;
     private String name;
-    private String date;
+    private LocalDateTime created;
+    private LocalDateTime modified;
     private String password;
 
-    public Calender(String task, String date, String name, String password) {
+    public Calender(String task, String name, String password, LocalDateTime created, LocalDateTime modified) {
         this.task = task;
-        this.date = date;
+        this.created = created;
+        this.modified = modified;
         this.name = name;
         this.password = password;
     }
+
 
     public void update(String task, String name) {
         this.task = task;

@@ -10,7 +10,7 @@ public interface CalenderRepository {
 
     List<CalenderResponseDto> findAllCalenders();
 
-    Calender saveCalender(Calender calender);
+    CalenderResponseDto saveCalender(Calender calender);
 
     void deleteCalender(Long id);
 }
