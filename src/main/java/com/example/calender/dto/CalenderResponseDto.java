@@ -18,16 +18,16 @@ public class CalenderResponseDto {
     public CalenderResponseDto(Calender calender) {
         this.id = calender.getId();
         this.task = calender.getTask();
+        this.name = calender.getName();
         this.created = calender.getCreated();
         this.modified = calender.getModified();
-        this.name = calender.getName();
     }
 
     public CalenderResponseDto(Long id, String task, String name, LocalDateTime created, LocalDateTime modified) {
         this.id = id;
         this.task = task;
+        this.name = name;
         this.created = created;
         this.modified = modified;
-        this.name = name;
     }
 }

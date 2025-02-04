@@ -40,13 +40,13 @@ public class CalenderController {
         return new ResponseEntity<>(calenderService.updateCalender(id, requestDto), HttpStatus.OK);
     }
 
-//    @PatchMapping("/{id})")
-//    public ResponseEntity<CalenderResponseDto> updateTask(
-//            @PathVariable Long id,
-//            @RequestBody CalenderRequestDto requestDto
-//    ) {
-//        return new ResponseEntity<>(calenderService.updateCalender(id, requestDto.getTask(), requestDto.getName()), HttpStatus.OK);
-//    }
+    @PatchMapping("/{id})")
+    public ResponseEntity<CalenderResponseDto> updateTask(
+            @PathVariable Long id,
+            @RequestBody CalenderRequestDto requestDto
+    ) {
+        return new ResponseEntity<>(calenderService.updateTask(id, requestDto.getTask(), requestDto.getPassword()), HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCalender(

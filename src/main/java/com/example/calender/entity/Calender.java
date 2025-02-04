@@ -18,19 +18,25 @@ public class Calender {
     private LocalDateTime modified;
     private String password;
 
-    public Calender(String task, String name, String password, LocalDateTime created, LocalDateTime modified) {
+    public Calender(Long id, String task, String name, String password, LocalDateTime created, LocalDateTime modified) {
+        this.id = id;
         this.task = task;
+        this.name = name;
         this.created = created;
         this.modified = modified;
-        this.name = name;
         this.password = password;
     }
 
 
-    public void update(String task, String name) {
+    public void updateCalender(Long id, String task, String name) {
+        this.id = id;
         this.task = task;
         this.name = name;
     }
 
-//    public void updateTask(String Task) {this.task = task;}
+    public void updateTask(Long id, String Task, String password) {
+        this.id = id;
+        this.task = task;
+        this.password = password;
+    }
 }
